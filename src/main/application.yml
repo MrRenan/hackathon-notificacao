@@ -9,7 +9,12 @@ spring:
         smtp:
           auth: true
           starttls.enable: true
+          connectiontimeout: 5000
+          timeout: 5000
+          writetimeout: 5000
 
 notificacao:
   email:
     remetente: sus-notificacoes@fiap.com.br
+    template:
+      lembrete: "email/lembrete-vacina"

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lembrete de Vacinação</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .header { color: #0066cc; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .footer { margin-top: 20px; font-size: 0.9em; color: #666; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>SUS - Sistema Único de Saúde</h1>
+</div>
+
+<p>Prezado(a) <span th:text="${nomePaciente}">[Nome]</span>,</p>
+
+<p>Este é um lembrete sobre sua próxima dose da vacina contra
+    <strong th:text="${nomeVacina}">[Vacina]</strong>, agendada para:</p>
+
+<p style="font-size: 1.2em; text-align: center; margin: 20px 0;">
+    <strong th:text="${dataProximaDose}">[Data]</strong>
+</p>
+
+<div class="footer">
+    <p>Atenciosamente,<br>Equipe de Saúde Pública</p>
+</div>
+</body>
+</html>
