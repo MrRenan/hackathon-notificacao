@@ -3,9 +3,9 @@ package br.com.fiap.hackathon.notificacao.infrastructure.email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
-import javax.naming.Context;
-import java.time.LocalDate;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -13,11 +13,13 @@ public class TemplateEmailService {
 
     private final TemplateEngine templateEngine;
 
-    public String gerarTemplateLembrete(String nomePaciente, String vacina, LocalDate data) {
-        Context ctx = new Context();
-        ctx.setVariable("nome", nomePaciente);
-        ctx.setVariable("vacina", vacina);
-        ctx.setVariable("data", data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        return templateEngine.process("emails/lembrete-vacina", ctx);
+    public String gerarTemplateLembrete(String nomePaciente, String vacina, String dataProximaDose) {
+        Context context = new Context();
+        context.setVariables(Map.of(
+                "nomePaciente", nomePaciente,
+                "vacina", vacina,
+                "dataProximaDose", dataProximaDose
+        ));
+        return templateEngine.process("email/lembrete-vacina", context);
     }
 }

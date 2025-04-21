@@ -4,17 +4,16 @@ spring:
     port: 587
     username: ${EMAIL_USERNAME}
     password: ${EMAIL_PASSWORD}
+    protocol: smtp
     properties:
       mail:
         smtp:
           auth: true
-          starttls.enable: true
+          starttls:
+            enable: true
+            required: true
           connectiontimeout: 5000
           timeout: 5000
           writetimeout: 5000
-
-notificacao:
-  email:
-    remetente: sus-notificacoes@fiap.com.br
-    template:
-      lembrete: "email/lembrete-vacina"
+          ssl:
+            trust: "*"
