@@ -13,7 +13,6 @@ import org.thymeleaf.context.Context;
 import java.util.Map;
 
 @Component
-@RequiredArgsConstructor
 public class EmailSender {
 
     private final JavaMailSender mailSender;
